@@ -7,6 +7,7 @@ const healthMinistryController = {
   // Route handler pour l'enregistrement du ministère de la santé
   registerMinistryOfHealth: async (req, res) => {
     try {
+      if (MinistryOfHealth.find() !== null) return;
       const { name, location, contactNumber } = req.body;
 
       const newMinistry = new MinistryOfHealth({
@@ -32,9 +33,12 @@ const healthMinistryController = {
   // Route handler pour la récupération des détails d'un ministère de la santé
   getMinistryDetails: async (req, res) => {
     try {
-      const { ministryId } = req.params;
+      // const { ministryId } = req.params;
+      // return res.json("jjj");
 
-      const ministry = await MinistryOfHealth.findById(ministryId);
+      const ministry = await MinistryOfHealth.findOne();
+
+      ministry.healthInstitutions = await HealthInstitution.find();
 
       if (!ministry) {
         return res
@@ -91,9 +95,7 @@ const healthMinistryController = {
     try {
       const { ministryId } = req.params;
 
-      const healthInstitutions = await HealthInstitution.find({
-        ministryOfHealth: ministryId,
-      });
+      const healthInstitutions = await HealthInstitution.find();
 
       res.status(200).json(healthInstitutions);
     } catch (error) {

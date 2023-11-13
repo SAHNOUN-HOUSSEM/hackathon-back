@@ -1,11 +1,19 @@
 const express = require("express");
+const {
+  registerDoctor,
+  getDoctorDetails,
+  updateDoctorDetails,
+  getDoctorPatients,
+  doctorLogin,
+  getAllDoctor,
+} = require("../controller/doctorsController");
 const router = express.Router();
-const doctorController = require("../controller/doctorsController ");
-
 // Routes liées aux médecins
-router.post("/register", doctorController.registerDoctor);
-router.get("/:doctorId", doctorController.getDoctorDetails);
-router.put("/:doctorId", doctorController.updateDoctorDetails);
-router.get("/:doctorId/patients", doctorController.getDoctorPatients);
+router.post("/register", registerDoctor);
+router.get("/", getAllDoctor);
+router.get("/:doctorId", getDoctorDetails);
+router.put("/:doctorId", updateDoctorDetails);
+router.get("/:doctorId/patients", getDoctorPatients);
+router.post("/login", doctorLogin);
 
 module.exports = router;

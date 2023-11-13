@@ -32,6 +32,17 @@ const institutionsController = {
     }
   },
 
+  // Route handler pour obtenir toutes les institutions de santé
+  getAllHealthInstitutions: async (req, res) => {
+    try {
+      const allInstitutions = await HealthInstitution.find();
+      res.status(200).json({ success: true, data: allInstitutions });
+    } catch (error) {
+      console.error("Error fetching health institutions:", error);
+      res.status(500).json({ success: false, error: "Internal Server Error" });
+    }
+  },
+
   // Route handler pour la récupération des médecins affiliés à une institution de santé
   getInstitutionDoctors: async (req, res) => {
     try {

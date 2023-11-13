@@ -31,6 +31,9 @@ app.use(
   require("./routes/emergencyNotificationRoutes")
 );
 app.use("/doctors", require("./routes/doctorRoutes"));
+app.use("/students", require("./routes/studentRoutes"));
+app.use("/medicalCampaign", require("./routes/medicalCampaignRoutes"));
+app.use("/medicalRecord", require("./routes/medicalRecordRoutes"));
 
 app.use(notFoundMiddleware);
 

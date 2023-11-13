@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const inventoryController = require("../controller/inventoriesController ");
+const inventoryController = require("../controller/inventoriesController");
 
 // Routes liées aux inventaires
 router.post("/register", inventoryController.createInventory);

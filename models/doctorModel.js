@@ -3,8 +3,9 @@ const mongoose = require("mongoose");
 const doctorSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  gender: { type: String },
-  birthdate: { type: Date },
+  cin: { type: String },
+  email: { type: String },
+  password: { type: String },
   contactNumber: { type: String },
   specialization: { type: String },
   healthInstitution: {

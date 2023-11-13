@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const emergencyNotificationController = require("../controller/notificationsController ");
+const emergencyNotificationController = require("../controller/notificationsController");
 
 // Routes liées aux notifications d'urgence
 router.post("/", emergencyNotificationController.sendEmergencyNotification);

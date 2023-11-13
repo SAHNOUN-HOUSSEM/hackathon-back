@@ -54,6 +54,28 @@ const patientsController = {
       });
     }
   },
+  // Route handler pour la récupération des détails d'un patient
+  getAllPatientDetails: async (req, res) => {
+    try {
+      const patients = await Patient.find();
+
+      if (!patients) {
+        return res
+          .status(404)
+          .json({ error: "Le patient spécifié n'existe pas." });
+      }
+
+      res.status(200).json(patients);
+    } catch (error) {
+      console.error(
+        "Erreur lors de la récupération des détails du patient :",
+        error
+      );
+      res.status(500).json({
+        error: "Erreur lors de la récupération des détails du patient.",
+      });
+    }
+  },
 
   // Route handler pour la mise à jour des détails d'un patient
   updatePatientDetails: async (req, res) => {
